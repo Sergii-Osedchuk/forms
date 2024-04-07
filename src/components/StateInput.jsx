@@ -1,19 +1,24 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 
 export default function Login() {
 
-  const email = useRef();
-  const password = useRef();
+  const [enteredEmail, setEnteredEmail] = useState('');
+  const [enteredPassword, setEnteredPassword] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
+  }
 
-    const enteredEmail = email.current.value;
-    const enteredPassword = password.current.value;
+  function handleEmailChange(event) {
+    setEnteredEmail(event.target.value);
+  }
+
+  function handlePasswordChange(event) {
+    setEnteredPassword(event.target.value);
   }
 
   return (
-    <form onSumbit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <h2>Login</h2>
 
       <div className="control-row">
@@ -23,7 +28,8 @@ export default function Login() {
             id="email" 
             type="email" 
             name="email" 
-            ref={email}
+            onChange={handleEmailChange}
+            value={enteredEmail}
           />
         </div>
 
@@ -33,7 +39,8 @@ export default function Login() {
             id="password" 
             type="password" 
             name="password" 
-            ref={password}
+            onChange={handlePasswordChange}
+            value={enteredPassword}
           />
         </div>
       </div>
