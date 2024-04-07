@@ -5,6 +5,8 @@ export default function Login() {
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
 
+  const emailIsInvalid = !enteredEmail.includes("@") && enteredEmail.length > 0;
+
   function handleSubmit(event) {
     event.preventDefault();
   }
@@ -31,6 +33,9 @@ export default function Login() {
             onChange={handleEmailChange}
             value={enteredEmail}
           />
+          <div className='control-error'>
+            {emailIsInvalid && <p>Please enter valid email</p>}
+          </div>
         </div>
 
         <div className="control no-margin">

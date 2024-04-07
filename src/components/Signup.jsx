@@ -5,7 +5,7 @@ export default function Signup() {
     const fd = new FormData(event.target);
     // const enteredEmail = fd.get('email');
     const data = Object.fromEntries(fd.entries());
-    const acquisitionChannel = fd.getAll('aquisition');
+    const acquisitionChannel = fd.getAll('acquisition');
     data.acquisition = acquisitionChannel;
 }
   return (
