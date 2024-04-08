@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Input from './Input';
 
 export default function Login() {
 
@@ -36,40 +37,35 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} noValidate>
       <h2>Login</h2>
 
       <div className="control-row">
-        <div className="control no-margin">
-          <label htmlFor="email">Email</label>
-          <input 
-            id="email" 
-            type="email" 
-            name="email" 
-            onBlur={() => handleInputBlur('email')}
-            onChange={handleEmailChange}
-            value={enteredEmail}
-          />
-          <div className='control-error'>
-            {emailIsInvalid && <p>Please enter valid email</p>}
-          </div>
-        </div>
+        <Input 
+          label='Email' 
+          id='email' 
+          type='email' 
+          name='email' 
+          onBlur={() => handleInputBlur('email')}
+          onChange={handleEmailChange}
+          value={enteredEmail}
+          error={emailIsInvalid && 'Please enter valid email address'}
+        />
 
-        <div className="control no-margin">
-          <label htmlFor="password">Password</label>
-          <input 
-            id="password" 
-            type="password" 
-            name="password" 
-            onChange={handlePasswordChange}
-            value={enteredPassword}
-          />
-        </div>
+        <Input 
+          label='Password' 
+          id='password' 
+          type='password' 
+          name='password' 
+          onChange={handlePasswordChange}
+          onBlur={() => handleInputBlur('password')}
+          value={enteredPassword}
+        />
       </div>
 
       <p className="form-actions">
         <button className="button button-flat">Reset</button>
-        <button className="button" >Login</button>
+        <button className="button" type='submit'>Login</button>
       </p>
     </form>
   );

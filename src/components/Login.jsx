@@ -53,7 +53,7 @@ export default function Login() {
 
       <p className="form-actions">
         <button className="button button-flat">Reset</button>
-        <button className="button" type='submit' onClick={handleSubmit}>Login</button>
+        <button type='submit' className="button" onClick={handleSubmit}>Login</button>
       </p>
     </form>
   );
