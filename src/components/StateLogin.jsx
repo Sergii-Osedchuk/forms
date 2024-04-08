@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Input from './Input';
+import { isEmail } from '../util/validation';
 
 export default function Login() {
 
@@ -11,7 +12,7 @@ export default function Login() {
     password: false
   })
 
-  const emailIsInvalid = !enteredEmail.includes("@") && didEdit.email;
+  const emailIsInvalid = !isEmail(enteredEmail) && didEdit.email;
 
   function handleSubmit(event) {
     event.preventDefault();
